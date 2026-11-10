@@ -414,6 +414,10 @@ msgstr "می‌تواند متوقف شود"
 msgid "Cancel"
 msgstr "لغو"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Cannot read GPU processes. Check nvidia-smi pmon, driver support, and agent permissions."
+msgstr ""
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Capabilities"
 msgstr "قابلیت‌ها"
@@ -1061,6 +1065,11 @@ msgstr "ناموفق: {0}"
 msgid "Fans"
 msgstr "فن‌ها"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Filter GPU processes"
+msgstr ""
+
 #: src/components/containers-table/containers-table.tsx
 #: src/components/network-monitors-table/network-monitors-table.tsx
 #: src/components/routes/settings/alerts-history-data-table.tsx
@@ -1131,13 +1140,38 @@ msgstr "پردازنده گرافیکی"
 msgid "GPU Engines"
 msgstr "موتورهای GPU"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/systems-table/systems-table-columns.tsx
+msgid "GPU Memory"
+msgstr ""
+
 #: src/components/routes/system/charts/gpu-charts.tsx
 msgid "GPU Power Draw"
 msgstr "مصرف برق پردازنده گرافیکی"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is stale. Waiting for a new sample."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is unavailable while the system is offline or paused."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process monitoring requires Linux and NVIDIA."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Processes"
+msgstr ""
+
 #: src/lib/alerts.ts
 msgid "GPU Usage"
 msgstr "میزان استفاده از GPU"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Utilization"
+msgstr ""
 
 #: src/components/routes/system/info-bar.tsx
 #: src/components/systems-table/systems-table.tsx
@@ -1249,6 +1283,10 @@ msgstr "آدرس ایمیل نامعتبر است."
 msgid "Language"
 msgstr "زبان"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Last sampled"
+msgstr ""
+
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "طرح‌بندی"
@@ -1265,6 +1303,10 @@ msgstr "چرخه حیات"
 #: src/components/systemd-table/systemd-table.tsx
 msgid "limit"
 msgstr "محدودیت"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
+msgstr ""
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"
@@ -1366,6 +1408,10 @@ msgstr "حداکثر ۱ ساعت"
 #: src/components/systems-table/systems-table-columns.tsx
 msgid "Memory"
 msgstr "حافظه"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Memory (RSS)"
+msgstr ""
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Memory limit"
@@ -1476,9 +1522,17 @@ msgstr "خیر"
 msgid "No detail data for this pool."
 msgstr "دادهٔ جزئی برای این استخر موجود نیست."
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No GPU processes are running."
+msgstr ""
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "No logs found."
 msgstr "گزارشی یافت نشد."
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No matching processes."
+msgstr ""
 
 #: src/components/command-palette.tsx
 #: src/components/systemd-table/systemd-table.tsx
@@ -1749,6 +1803,10 @@ msgstr "میزان دقیق استفاده در زمان ثبت شده"
 #: src/components/routes/settings/general.tsx
 msgid "Preferred Language"
 msgstr "زبان ترجیحی"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Process"
+msgstr ""
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Process started"
@@ -2476,6 +2534,10 @@ msgstr "برای گواهی‌های خودامضا استفاده کنید."
 msgid "Used"
 msgstr "استفاده شده"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "User"
+msgstr ""
+
 #: src/components/command-palette.tsx
 #: src/components/navbar.tsx
 msgid "Users"
@@ -2523,6 +2585,10 @@ msgstr "فیلدهای قابل مشاهده"
 #: src/components/routes/system/chart-card.tsx
 msgid "Waiting for enough records to display"
 msgstr "در انتظار رکوردهای کافی برای نمایش"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Waiting for GPU process data. Update the agent if no data arrives."
+msgstr ""
 
 #: src/components/routes/settings/general.tsx
 msgid "Want to help improve our translations? Check <0>Crowdin</0> for details."

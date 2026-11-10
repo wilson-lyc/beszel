@@ -191,3 +191,30 @@ func TestZeroValueJSONMatchesV1(t *testing.T) {
 		})
 	}
 }
+
+func TestGPUProcessTransport(t *testing.T) {
+	stats := Stats{GPUProcesses: &GPUProcessSnapshot{Status: "ok", Updated: 1234, Processes: []GPUProcess{
+		{GPU: "0", PID: 42, User: "alice", Name: "python", Memory: new(uint64(0)), Usage: new(0.0), CPU: new(125.0), RSS: new(uint64(1024))},
+		{GPU: "1", PID: 99, Name: "Xorg"},
+	}}}
+	wire, err := cbor.Marshal(stats)
+	require.NoError(t, err)
+	var decoded Stats
+	require.NoError(t, cbor.Unmarshal(wire, &decoded))
+	assert.Equal(t, stats.GPUProcesses, decoded.GPUProcesses)
+	for _, marshal := range []func(any) ([]byte, error){json.Marshal, func(v any) ([]byte, error) { return jsonv2.Marshal(v) }} {
+		payload, err := marshal(decoded)
+		require.NoError(t, err)
+		var result struct {
+			GP struct {
+				Processes []map[string]any `json:"processes"`
+			} `json:"gp"`
+		}
+		require.NoError(t, json.Unmarshal(payload, &result))
+		require.Len(t, result.GP.Processes, 2)
+		assert.Equal(t, float64(0), result.GP.Processes[0]["memory"])
+		assert.Equal(t, float64(0), result.GP.Processes[0]["usage"])
+		assert.NotContains(t, result.GP.Processes[1], "memory")
+		assert.NotContains(t, result.GP.Processes[1], "usage")
+	}
+}

@@ -62,6 +62,25 @@ type Stats struct {
 	MemBytes          [4]uint64            `json:"mem,omitzero" cbor:"41,keyasint,omitzero"`  // [total, used, buff/cache, zfs arc] bytes
 	MaxMemBytes       uint64               `json:"memm,omitzero" cbor:"-"`                    // max used memory bytes
 	SwapBytes         [2]uint64            `json:"swap,omitzero" cbor:"42,keyasint,omitzero"` // [total, used] bytes
+	GPUProcesses      *GPUProcessSnapshot  `json:"gp,omitempty" cbor:"43,keyasint,omitempty"` // live only, not persisted
+}
+
+// GPUProcessSnapshot is a point-in-time process list, independent of chart averages.
+type GPUProcessSnapshot struct {
+	Status    string       `json:"status" cbor:"0,keyasint"`  // ok, unavailable, unsupported
+	Updated   int64        `json:"updated" cbor:"1,keyasint"` // Unix milliseconds
+	Processes []GPUProcess `json:"processes" cbor:"2,keyasint"`
+}
+
+type GPUProcess struct {
+	GPU    string   `json:"gpu" cbor:"0,keyasint"` // NVIDIA device index
+	PID    int32    `json:"pid" cbor:"1,keyasint"`
+	User   string   `json:"user,omitempty" cbor:"2,keyasint,omitempty"`
+	Name   string   `json:"name" cbor:"3,keyasint"`
+	Memory *uint64  `json:"memory,omitempty" cbor:"4,keyasint,omitempty"` // framebuffer bytes
+	Usage  *float64 `json:"usage,omitempty" cbor:"5,keyasint,omitempty"`  // SM utilization percent
+	CPU    *float64 `json:"cpu,omitempty" cbor:"6,keyasint,omitempty"`    // 100% per logical CPU
+	RSS    *uint64  `json:"rss,omitempty" cbor:"7,keyasint,omitempty"`    // resident host memory bytes
 }
 
 // ZfsPool holds per-pool ZFS metrics for a single collection interval.

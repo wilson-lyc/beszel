@@ -27,6 +27,7 @@ import { LoadAverageChart } from "./system/charts/load-average-chart"
 import { ContainerIcon, CpuIcon, HardDriveIcon, NetworkIcon, PackageIcon, TerminalSquareIcon } from "lucide-react"
 import { GpuIcon } from "../ui/icons"
 import ContainersTable from "../containers-table/containers-table"
+import GPUProcessesTable from "./system/gpu-processes-table"
 
 const SEMVER_0_14_0 = parseSemVer("0.14.0")
 const SEMVER_0_15_0 = parseSemVer("0.15.0")
@@ -156,6 +157,8 @@ export default memo(function SystemDetail({ id }: { id: string }) {
 					/>
 				)}
 
+				{hasGpu && <GPUProcessesTable key={system.id} system={system} />}
+
 				<ExtraFsCharts systemData={systemData} />
 
 				{hasZfs && <ZfsCharts systemData={systemData} />}
@@ -267,6 +270,7 @@ export default memo(function SystemDetail({ id }: { id: string }) {
 						>
 							{hasGpuPowerData && <GpuPowerChart chartData={chartData} grid={grid} dataEmpty={dataEmpty} />}
 						</GpuCharts>
+						{activeTab === "gpu" && <GPUProcessesTable key={system.id} system={system} />}
 					</TabsContent>
 				)}
 

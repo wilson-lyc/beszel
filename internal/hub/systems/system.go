@@ -273,7 +273,10 @@ func (sys *System) createRecords(data *system.CombinedData) (*core.Record, error
 		}
 		systemStatsRecord := core.NewRecord(systemStatsCollection)
 		systemStatsRecord.Set("system", systemRecord.Id)
-		systemStatsRecord.Set("stats", data.Stats)
+		// Process identities are live snapshots, never historical chart data.
+		persistedStats := data.Stats
+		persistedStats.GPUProcesses = nil
+		systemStatsRecord.Set("stats", persistedStats)
 		systemStatsRecord.Set("type", "1m")
 		if err := txApp.SaveNoValidate(systemStatsRecord); err != nil {
 			return err
@@ -334,10 +337,23 @@ func (sys *System) createRecords(data *system.CombinedData) (*core.Record, error
 		// Distinguish an idle GPU from a system without GPU data (#2312)
 		info := struct {
 			system.Info
-			GpuPct *float64 `json:"g,omitempty"`
+			GpuPct       *float64 `json:"g,omitempty"`
+			GpuMemoryPct *float64 `json:"gm,omitempty"`
 		}{Info: data.Info}
 		if len(data.Stats.GPUData) > 0 {
 			info.GpuPct = &data.Info.GpuPct
+		}
+		// Weight GPUs by memory capacity, excluding devices without memory totals.
+		var gpuMemoryUsed, gpuMemoryTotal float64
+		for _, gpu := range data.Stats.GPUData {
+			if gpu.MemoryTotal > 0 {
+				gpuMemoryUsed += gpu.MemoryUsed
+				gpuMemoryTotal += gpu.MemoryTotal
+			}
+		}
+		if gpuMemoryTotal > 0 {
+			pct := gpuMemoryUsed / gpuMemoryTotal * 100
+			info.GpuMemoryPct = &pct
 		}
 		systemRecord.Set("info", info)
 		if err := txApp.SaveNoValidate(systemRecord); err != nil {

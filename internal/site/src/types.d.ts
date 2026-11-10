@@ -77,6 +77,8 @@ export interface SystemInfo {
 	p?: boolean
 	/** highest gpu utilization */
 	g?: number
+	/** GPU memory percent across devices with known memory capacity */
+	gm?: number
 	/** dashboard display temperature */
 	dt?: number
 	/** operating system */
@@ -164,6 +166,7 @@ export interface SystemStats {
 	z?: Record<string, ZfsPool>
 	/** GPU data */
 	g?: Record<string, GPUData>
+	gp?: GPUProcessSnapshot
 	/** battery percent and state */
 	bat?: [number, BatteryState]
 	/** battery percentages by device name */
@@ -172,6 +175,23 @@ export interface SystemStats {
 	wf?: Record<string, number>
 	/** network interfaces [upload bytes, download bytes, total upload bytes, total download bytes] */
 	ni?: Record<string, [number, number, number, number]>
+}
+
+export interface GPUProcessSnapshot {
+	status: "ok" | "unavailable" | "unsupported"
+	updated: number
+	processes: GPUProcess[] | null
+}
+
+export interface GPUProcess {
+	gpu: string
+	pid: number
+	user?: string
+	name: string
+	memory?: number
+	usage?: number
+	cpu?: number
+	rss?: number
 }
 
 export interface GPUData {

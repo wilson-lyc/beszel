@@ -414,6 +414,10 @@ msgstr "停止可能"
 msgid "Cancel"
 msgstr "キャンセル"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Cannot read GPU processes. Check nvidia-smi pmon, driver support, and agent permissions."
+msgstr ""
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Capabilities"
 msgstr "機能"
@@ -1061,6 +1065,11 @@ msgstr "失敗: {0}"
 msgid "Fans"
 msgstr "ファン"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Filter GPU processes"
+msgstr ""
+
 #: src/components/containers-table/containers-table.tsx
 #: src/components/network-monitors-table/network-monitors-table.tsx
 #: src/components/routes/settings/alerts-history-data-table.tsx
@@ -1131,13 +1140,38 @@ msgstr "GPU"
 msgid "GPU Engines"
 msgstr "GPUエンジン"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/systems-table/systems-table-columns.tsx
+msgid "GPU Memory"
+msgstr ""
+
 #: src/components/routes/system/charts/gpu-charts.tsx
 msgid "GPU Power Draw"
 msgstr "GPUの消費電力"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is stale. Waiting for a new sample."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is unavailable while the system is offline or paused."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process monitoring requires Linux and NVIDIA."
+msgstr ""
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Processes"
+msgstr ""
+
 #: src/lib/alerts.ts
 msgid "GPU Usage"
 msgstr "GPU使用率"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Utilization"
+msgstr ""
 
 #: src/components/routes/system/info-bar.tsx
 #: src/components/systems-table/systems-table.tsx
@@ -1249,6 +1283,10 @@ msgstr "無効なメールアドレスです。"
 msgid "Language"
 msgstr "言語"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Last sampled"
+msgstr ""
+
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "レイアウト"
@@ -1265,6 +1303,10 @@ msgstr "ライフサイクル"
 #: src/components/systemd-table/systemd-table.tsx
 msgid "limit"
 msgstr "制限"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
+msgstr ""
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"
@@ -1366,6 +1408,10 @@ msgstr "1時間最大"
 #: src/components/systems-table/systems-table-columns.tsx
 msgid "Memory"
 msgstr "メモリ"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Memory (RSS)"
+msgstr ""
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Memory limit"
@@ -1476,9 +1522,17 @@ msgstr "いいえ"
 msgid "No detail data for this pool."
 msgstr "このプールの詳細データはありません。"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No GPU processes are running."
+msgstr ""
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "No logs found."
 msgstr "ログが見つかりません。"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No matching processes."
+msgstr ""
 
 #: src/components/command-palette.tsx
 #: src/components/systemd-table/systemd-table.tsx
@@ -1749,6 +1803,10 @@ msgstr "記録された時点での正確な利用"
 #: src/components/routes/settings/general.tsx
 msgid "Preferred Language"
 msgstr "優先言語"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Process"
+msgstr ""
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Process started"
@@ -2476,6 +2534,10 @@ msgstr "自己署名証明書に使用します。"
 msgid "Used"
 msgstr "使用中"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "User"
+msgstr ""
+
 #: src/components/command-palette.tsx
 #: src/components/navbar.tsx
 msgid "Users"
@@ -2523,6 +2585,10 @@ msgstr "表示列"
 #: src/components/routes/system/chart-card.tsx
 msgid "Waiting for enough records to display"
 msgstr "表示に必要なデータが揃うまで待機中"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Waiting for GPU process data. Update the agent if no data arrives."
+msgstr ""
 
 #: src/components/routes/settings/general.tsx
 msgid "Want to help improve our translations? Check <0>Crowdin</0> for details."

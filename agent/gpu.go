@@ -51,6 +51,8 @@ type GPUManager struct {
 	lastSnapshots map[uint16]map[string]*gpuSnapshot
 	// Per-card energy snapshots for Intel sysfs power calculation.
 	intelSysfsEnergySnapshots map[string]intelSysfsEnergySnapshot
+	processOnce               sync.Once
+	processCollector          *gpuProcessCollector
 }
 
 // gpuSnapshot stores the last observed incremental values for delta tracking

@@ -414,6 +414,10 @@ msgstr "可停止"
 msgid "Cancel"
 msgstr "取消"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Cannot read GPU processes. Check nvidia-smi pmon, driver support, and agent permissions."
+msgstr "无法读取 GPU 进程。请检查 nvidia-smi pmon、驱动支持情况及 Agent 权限。"
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Capabilities"
 msgstr "能力"
@@ -1061,6 +1065,11 @@ msgstr "失败: {0}"
 msgid "Fans"
 msgstr "风扇"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Filter GPU processes"
+msgstr "筛选 GPU 进程"
+
 #: src/components/containers-table/containers-table.tsx
 #: src/components/network-monitors-table/network-monitors-table.tsx
 #: src/components/routes/settings/alerts-history-data-table.tsx
@@ -1131,13 +1140,38 @@ msgstr "显卡"
 msgid "GPU Engines"
 msgstr "GPU 引擎"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+#: src/components/systems-table/systems-table-columns.tsx
+msgid "GPU Memory"
+msgstr "显存"
+
 #: src/components/routes/system/charts/gpu-charts.tsx
 msgid "GPU Power Draw"
 msgstr "GPU 功耗"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is stale. Waiting for a new sample."
+msgstr "GPU 进程数据已过期，正在等待新采样。"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process data is unavailable while the system is offline or paused."
+msgstr "系统离线或暂停时无法获取 GPU 进程数据。"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU process monitoring requires Linux and NVIDIA."
+msgstr "GPU 进程监控需要 Linux 和 NVIDIA。"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Processes"
+msgstr "GPU 进程"
+
 #: src/lib/alerts.ts
 msgid "GPU Usage"
 msgstr "GPU 使用率"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "GPU Utilization"
+msgstr "GPU 利用率"
 
 #: src/components/routes/system/info-bar.tsx
 #: src/components/systems-table/systems-table.tsx
@@ -1249,6 +1283,10 @@ msgstr "无效的电子邮件地址。"
 msgid "Language"
 msgstr "语言"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Last sampled"
+msgstr "上次采样"
+
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "布局"
@@ -1265,6 +1303,10 @@ msgstr "生命周期"
 #: src/components/systemd-table/systemd-table.tsx
 msgid "limit"
 msgstr "限制"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
+msgstr "显示最新采样，不受图表时间范围影响。每行对应一个 GPU 和 PID；CPU 的 100% 表示占满一个逻辑核心。无法获取的指标显示为 —。"
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"
@@ -1366,6 +1408,10 @@ msgstr "1 小时最大"
 #: src/components/systems-table/systems-table-columns.tsx
 msgid "Memory"
 msgstr "内存"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Memory (RSS)"
+msgstr "内存（RSS）"
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Memory limit"
@@ -1476,9 +1522,17 @@ msgstr "否"
 msgid "No detail data for this pool."
 msgstr "此存储池没有可用的详细数据。"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No GPU processes are running."
+msgstr "当前没有 GPU 进程。"
+
 #: src/components/systemd-table/systemd-table.tsx
 msgid "No logs found."
 msgstr "未找到日志。"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "No matching processes."
+msgstr "没有匹配的进程。"
 
 #: src/components/command-palette.tsx
 #: src/components/systemd-table/systemd-table.tsx
@@ -1749,6 +1803,10 @@ msgstr "采集时间下的精确内存使用率"
 #: src/components/routes/settings/general.tsx
 msgid "Preferred Language"
 msgstr "首选语言"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Process"
+msgstr "进程"
 
 #: src/components/systemd-table/systemd-table.tsx
 msgid "Process started"
@@ -2476,6 +2534,10 @@ msgstr "用于自签名证书。"
 msgid "Used"
 msgstr "已用"
 
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "User"
+msgstr "用户"
+
 #: src/components/command-palette.tsx
 #: src/components/navbar.tsx
 msgid "Users"
@@ -2523,6 +2585,10 @@ msgstr "可见列"
 #: src/components/routes/system/chart-card.tsx
 msgid "Waiting for enough records to display"
 msgstr "正在收集足够的数据来显示"
+
+#: src/components/routes/system/gpu-processes-table.tsx
+msgid "Waiting for GPU process data. Update the agent if no data arrives."
+msgstr "正在等待 GPU 进程数据。如一直无数据，请更新 Agent。"
 
 #: src/components/routes/settings/general.tsx
 msgid "Want to help improve our translations? Check <0>Crowdin</0> for details."

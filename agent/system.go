@@ -227,6 +227,7 @@ func (a *Agent) getSystemStats(cacheTimeMs uint16) system.Stats {
 
 	// GPU data
 	if a.gpuManager != nil {
+		systemStats.GPUProcesses = a.gpuManager.GetProcessData()
 		// reset high gpu percent
 		a.systemInfo.GpuPct = 0
 		// get current GPU data
