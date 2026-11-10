@@ -7,6 +7,13 @@ main:
       services:
         - docker
       stages:
+        # Buildx's registry token request uses the pipeline container's CA store.
+        # The Node slim image does not include ca-certificates or git.
+        - name: Prepare build certificates and Git
+          script:
+            - apt-get update
+            - apt-get install -y --no-install-recommends ca-certificates git
+            - update-ca-certificates
         - name: Build web UI
           script:
             - npm ci --prefix internal/site --no-audit --no-fund
