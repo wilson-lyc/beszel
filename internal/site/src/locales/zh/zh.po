@@ -1283,10 +1283,6 @@ msgstr "無效的電子郵件地址。"
 msgid "Language"
 msgstr "語言"
 
-#: src/components/routes/system/gpu-processes-table.tsx
-msgid "Last sampled"
-msgstr ""
-
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "版面配置"
@@ -1305,8 +1301,8 @@ msgid "limit"
 msgstr "限制"
 
 #: src/components/routes/system/gpu-processes-table.tsx
-msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
-msgstr ""
+msgid "Live process usage. CPU: 100% per core."
+msgstr "即時處理程序資源用量，CPU 100% 為單核心。"
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"

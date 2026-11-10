@@ -1278,10 +1278,6 @@ msgstr "Invalid email address."
 msgid "Language"
 msgstr "Language"
 
-#: src/components/routes/system/gpu-processes-table.tsx
-msgid "Last sampled"
-msgstr "Last sampled"
-
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "Layout"
@@ -1300,8 +1296,8 @@ msgid "limit"
 msgstr "limit"
 
 #: src/components/routes/system/gpu-processes-table.tsx
-msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
-msgstr "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
+msgid "Live process usage. CPU: 100% per core."
+msgstr "Live process usage. CPU: 100% per core."
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"

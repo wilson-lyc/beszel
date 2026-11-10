@@ -1283,10 +1283,6 @@ msgstr "无效的电子邮件地址。"
 msgid "Language"
 msgstr "语言"
 
-#: src/components/routes/system/gpu-processes-table.tsx
-msgid "Last sampled"
-msgstr "上次采样"
-
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "布局"
@@ -1305,8 +1301,8 @@ msgid "limit"
 msgstr "限制"
 
 #: src/components/routes/system/gpu-processes-table.tsx
-msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
-msgstr "显示最新采样，不受图表时间范围影响。每行对应一个 GPU 和 PID；CPU 的 100% 表示占满一个逻辑核心。无法获取的指标显示为 —。"
+msgid "Live process usage. CPU: 100% per core."
+msgstr "实时进程资源占用，CPU 100% 为单核。"
 
 #: src/components/routes/system/charts/load-average-chart.tsx
 msgid "Load Average"

@@ -1283,10 +1283,6 @@ msgstr "Ugyldig e-postadresse."
 msgid "Language"
 msgstr "Språk"
 
-#: src/components/routes/system/gpu-processes-table.tsx
-msgid "Last sampled"
-msgstr ""
-
 #: src/components/systems-table/systems-table.tsx
 msgid "Layout"
 msgstr "Oppsett"
@@ -1305,7 +1301,7 @@ msgid "limit"
 msgstr "grense"
 
 #: src/components/routes/system/gpu-processes-table.tsx
-msgid "Live samples, independent of chart time range. One row per GPU and PID. CPU: 100% per logical core. Unavailable metrics: —."
+msgid "Live process usage. CPU: 100% per core."
 msgstr ""
 
 #: src/components/routes/system/charts/load-average-chart.tsx
