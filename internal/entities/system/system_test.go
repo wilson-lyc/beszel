@@ -212,6 +212,7 @@ func TestGPUProcessTransport(t *testing.T) {
 		}
 		require.NoError(t, json.Unmarshal(payload, &result))
 		require.Len(t, result.GP.Processes, 2)
+		assert.Equal(t, "alice", result.GP.Processes[0]["user"])
 		assert.Equal(t, float64(0), result.GP.Processes[0]["memory"])
 		assert.Equal(t, float64(0), result.GP.Processes[0]["usage"])
 		assert.NotContains(t, result.GP.Processes[1], "memory")

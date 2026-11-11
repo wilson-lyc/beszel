@@ -87,6 +87,7 @@ func (c *gpuProcessCollector) collect() *system.GPUProcessSnapshot {
 	nextCPU := make(map[int32]processCPUSample)
 	// A process using several GPUs has one CPU/RSS sample, repeated on its GPU rows.
 	metadata := make(map[int32]system.GPUProcess)
+	users := newGPUProcessUsers()
 	for i := range rows {
 		row := &rows[i]
 		if cached, ok := metadata[row.PID]; ok {
@@ -94,7 +95,7 @@ func (c *gpuProcessCollector) collect() *system.GPUProcessSnapshot {
 			continue
 		}
 		if p, err := process.NewProcessWithContext(ctx, row.PID); err == nil {
-			row.User, _ = p.UsernameWithContext(ctx)
+			row.User = users.username(ctx, p)
 			if name, err := p.NameWithContext(ctx); err == nil && name != "" {
 				row.Name = name
 			}

@@ -194,7 +194,7 @@ export default function GPUProcessesTable({ system }: { system: SystemRecord }) 
 											<Button
 												variant="ghost"
 												className={cn(
-													"h-9 px-3 flex items-center gap-2 duration-50",
+													"h-9 px-3 flex items-center gap-2 duration-50 [&_svg]:size-4 [&_svg]:shrink-0",
 													isSorted && "bg-accent/70 light:bg-accent text-accent-foreground/90"
 												)}
 												onClick={() => header.column.toggleSorting(isSorted === "asc")}
