@@ -1,7 +1,7 @@
 import { t } from "@lingui/core/macro"
 import { Trans, useLingui } from "@lingui/react/macro"
 import { useEffect, useMemo, useState } from "react"
-import { CpuIcon, FingerprintIcon, MemoryStickIcon, TerminalSquareIcon, UserIcon, XIcon } from "lucide-react"
+import { CpuIcon, FingerprintIcon, MemoryStickIcon, TerminalSquareIcon, XIcon } from "lucide-react"
 import { GpuIcon } from "@/components/ui/icons"
 import { DataTablePagination, usePagination } from "@/components/ui/data-table-pagination"
 import {
@@ -26,7 +26,6 @@ import { TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/compon
 const columnIcons = {
 	gpu: GpuIcon,
 	pid: FingerprintIcon,
-	user: UserIcon,
 	name: TerminalSquareIcon,
 	memory: MemoryStickIcon,
 	usage: GpuIcon,
@@ -85,7 +84,6 @@ export default function GPUProcessesTable({ system }: { system: SystemRecord }) 
 		() => [
 			{ accessorKey: "gpu", header: "GPU" },
 			{ accessorKey: "pid", header: "PID" },
-			{ accessorKey: "user", header: () => t`User`, cell: ({ row }) => row.original.user || "—" },
 			{ accessorKey: "name", header: () => t`Process` },
 			{
 				accessorKey: "memory",

@@ -81,7 +81,7 @@ func TestCreateRecordsGPUMemory(t *testing.T) {
 func TestCreateRecordsGPUProcessesLiveOnly(t *testing.T) {
 	sys, app := newTestSystemWithHub(t)
 	data := &system.CombinedData{Stats: system.Stats{GPUProcesses: &system.GPUProcessSnapshot{
-		Status: "ok", Updated: 1234, Processes: []system.GPUProcess{{PID: 42, GPU: "0", User: "alice", Name: "python"}},
+		Status: "ok", Updated: 1234, Processes: []system.GPUProcess{{PID: 42, GPU: "0", Name: "python"}},
 	}}}
 	_, err := sys.createRecords(data)
 	require.NoError(t, err)
@@ -89,7 +89,8 @@ func TestCreateRecordsGPUProcessesLiveOnly(t *testing.T) {
 	require.NotNil(t, data.Stats.GPUProcesses)
 	payload, err := marshalRealtimeData(data)
 	require.NoError(t, err)
-	assert.Contains(t, string(payload), `"user":"alice"`)
+	assert.Contains(t, string(payload), `"name":"python"`)
+	assert.NotContains(t, string(payload), `"user"`)
 	// Neither the history record nor homepage info may retain process identities.
 	record, err := app.FindFirstRecordByFilter("system_stats", "system={:system}", map[string]any{"system": sys.Id})
 	require.NoError(t, err)

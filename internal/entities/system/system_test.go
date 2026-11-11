@@ -194,7 +194,7 @@ func TestZeroValueJSONMatchesV1(t *testing.T) {
 
 func TestGPUProcessTransport(t *testing.T) {
 	stats := Stats{GPUProcesses: &GPUProcessSnapshot{Status: "ok", Updated: 1234, Processes: []GPUProcess{
-		{GPU: "0", PID: 42, User: "alice", Name: "python", Memory: new(uint64(0)), Usage: new(0.0), CPU: new(125.0), RSS: new(uint64(1024))},
+		{GPU: "0", PID: 42, Name: "python", Memory: new(uint64(0)), Usage: new(0.0), CPU: new(125.0), RSS: new(uint64(1024))},
 		{GPU: "1", PID: 99, Name: "Xorg"},
 	}}}
 	wire, err := cbor.Marshal(stats)
@@ -212,10 +212,25 @@ func TestGPUProcessTransport(t *testing.T) {
 		}
 		require.NoError(t, json.Unmarshal(payload, &result))
 		require.Len(t, result.GP.Processes, 2)
-		assert.Equal(t, "alice", result.GP.Processes[0]["user"])
+		assert.NotContains(t, result.GP.Processes[0], "user")
 		assert.Equal(t, float64(0), result.GP.Processes[0]["memory"])
 		assert.Equal(t, float64(0), result.GP.Processes[0]["usage"])
 		assert.NotContains(t, result.GP.Processes[1], "memory")
 		assert.NotContains(t, result.GP.Processes[1], "usage")
 	}
+}
+
+// Older agents may still send CBOR key 2. Discard owners rather than forwarding
+// them to realtime clients, and keep the remaining field numbers compatible.
+func TestGPUProcessDiscardsLegacyOwner(t *testing.T) {
+	wire, err := cbor.Marshal(map[int]any{0: "0", 1: 42, 2: "alice", 3: "python"})
+	require.NoError(t, err)
+	var process GPUProcess
+	require.NoError(t, cbor.Unmarshal(wire, &process))
+	assert.EqualValues(t, 42, process.PID)
+	assert.Equal(t, "python", process.Name)
+	payload, err := json.Marshal(process)
+	require.NoError(t, err)
+	assert.NotContains(t, string(payload), "alice")
+	assert.NotContains(t, string(payload), `"user"`)
 }

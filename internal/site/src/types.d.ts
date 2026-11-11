@@ -186,7 +186,6 @@ export interface GPUProcessSnapshot {
 export interface GPUProcess {
 	gpu: string
 	pid: number
-	user?: string
 	name: string
 	memory?: number
 	usage?: number

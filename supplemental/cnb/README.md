@@ -28,18 +28,6 @@ Private artifacts require `docker login docker.cnb.cool -u cnb` using a CNB acce
 
 For NVIDIA process monitoring, install/configure NVIDIA Container Toolkit on the Linux host and grant the Agent GPU access (`capabilities: [gpu]`) with `NVIDIA_DRIVER_CAPABILITIES=compute,utility`. Share the host PID namespace (`pid: host`) so the Agent can read the PIDs reported by NVIDIA. Keep the runtime as root or supply the permissions required to read process metadata. The slim image additionally needs the host `nvidia-smi` binary mounted as documented in its Dockerfile.
 
-To resolve host process owners correctly inside a container, mount the host passwd file read-only and set `HOST_ETC` to its directory in the container. Merge these settings into the Agent service:
-
-```yaml
-pid: host
-environment:
-  HOST_ETC: /host/etc
-volumes:
-  - /etc/passwd:/host/etc/passwd:ro
-```
-
-With `HOST_ETC` set, the host passwd file is authoritative; the Agent never substitutes a container account with the same UID. Unresolved owners appear as `UID 1000` (for example), while unreadable or exited processes display `—`. Native Agents use the system user lookup available to the Agent binary. Directory-service accounts in containers must also be present in the supplied passwd file to display their names.
-
 ## References
 
 - https://docs.cnb.cool/zh/build/grammar.html

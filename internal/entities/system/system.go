@@ -72,10 +72,10 @@ type GPUProcessSnapshot struct {
 	Processes []GPUProcess `json:"processes" cbor:"2,keyasint"`
 }
 
+// CBOR key 2 was the removed process owner; keep it reserved.
 type GPUProcess struct {
 	GPU    string   `json:"gpu" cbor:"0,keyasint"` // NVIDIA device index
 	PID    int32    `json:"pid" cbor:"1,keyasint"`
-	User   string   `json:"user,omitempty" cbor:"2,keyasint,omitempty"`
 	Name   string   `json:"name" cbor:"3,keyasint"`
 	Memory *uint64  `json:"memory,omitempty" cbor:"4,keyasint,omitempty"` // framebuffer bytes
 	Usage  *float64 `json:"usage,omitempty" cbor:"5,keyasint,omitempty"`  // SM utilization percent
